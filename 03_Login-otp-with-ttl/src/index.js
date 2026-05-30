@@ -11,7 +11,7 @@ function otpKey(phone) {
 
 app.post("/otp", async (req, res) => {
   const { phone } = req.body;
-  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  const otp = Math.floor(100000 + Math.random() * 900000).toString(); 
 
   await redis.set(otpKey(phone), otp, "EX", 30);    
   res.json({ message: "OTP Send", otp });
